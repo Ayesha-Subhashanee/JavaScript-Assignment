@@ -1,7 +1,17 @@
+'use strict';
 const students = [
-  {value: "2345768", name: "John"},
-  {value: "2134657", name: "Paul"},
-  {value: "5423679", name: "Jones"}
+  {
+    name: 'John',
+    id: '2345768',
+  },
+  {
+    name: 'Paul',
+    id: '2134657',
+  },
+  {
+    name: 'Jones',
+    id: '5423679',
+  },
 ];
 
 const target = document.getElementById('target');
