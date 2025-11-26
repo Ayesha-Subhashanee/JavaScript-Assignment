@@ -1,17 +1,29 @@
-document.getElementById("searchForm").addEventListener("submit", function(event) {
-  event.preventDefault(); // Stop normal form submission
+'use strict';
 
-  const value = document.getElementById("query").value;
+const form = document.getElementById('searchForm');
+const input = document.getElementById('query');
 
+form.addEventListener('submit', function(event) {
+  event.preventDefault();  // stop page from reloading
 
-  fetch(`https://api.tvmaze.com/search/shows?q=${encodeURIComponent(value)}`)
-    .then(response => response.json())
-    .then(data => {
-      console.clear();
-      console.log("Search results for:", value);
+  const searchText = input.value.trim();
+
+  if (searchText === '') {
+    console.log('Please enter a TV show name.');
+    return;
+  }
+
+  const url = 'https://api.tvmaze.com/search/shows?q=' + encodeURIComponent(searchText);
+
+  fetch(url)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+      console.log('Search results for:', searchText);
       console.log(data);
     })
-    .catch(error => {
-      console.error("Error:", error);
+    .catch(function(error) {
+      console.log('Error fetching TV data:', error);
     });
 });
