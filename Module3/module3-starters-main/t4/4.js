@@ -18,7 +18,7 @@ const target = document.getElementById('target');
 
 students.forEach(st => {
   const opt = document.createElement('option');
-  opt.value = st.value;
-  opt.textContent = st.name;
+  opt.value = st.id;          // FIXED: use st.id
+  opt.textContent = st.name;  // option label
   target.appendChild(opt);
 });
